@@ -1,0 +1,39 @@
+<form method="post" [formGroup]="searchForm">
+  <div class="form-group">
+    <label for="exampleInputEmail1">Buscar funcionários</label>
+    <input type="text" class="form-control" formControlName="search_response">    
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <button class="btn btn-primary" (click)="showEmployee()" >Buscar</button>
+    </div>
+    <div class="col-md-6 text-right">
+      <button class="btn btn-primary" (click)="showEmployees()">Buscar todos</button>
+    </div>
+  </div>
+</form>
+
+<div class="request-response" *ngIf="showData">
+  <h3>{{ employee['length'] }} funcionário(s) encontrado(s)</h3>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Nome completo</th>
+        <th scope="col">ID Job</th>
+        <th scope="col">Aniversário</th>
+        <th scope="col">Código crachá</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let employees of employee">
+        <td> {{ employees.first_name + ' ' + employees.last_name }} </td>
+        <td> {{ employees.role_id }} </td>
+        <td> {{ employees.birthday }} </td>
+        <td> {{ employees.cod_badge }} </td>
+      </tr>
+    
+    </tbody>
+  </table>
+</div>
+
+
