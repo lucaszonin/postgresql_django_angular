@@ -16,7 +16,7 @@ export class SearchEmployeesComponent implements OnInit {
 
   showData = false;
   employee = {};
-
+  
   searchForm = new FormGroup({
     search_response : new FormControl('')
   });
@@ -36,11 +36,13 @@ export class SearchEmployeesComponent implements OnInit {
   showEmployee(){
 
     const search_data = this.searchForm.value;
-    console.log(search_data);
+    this.showData = true;
 
-   return this.auth.getEmployee(search_data.search_response).subscribe(employee => {
-    console.log(employee) 
-    this.employee = employee });
+    return this.auth.getEmployee(search_data.search_response).subscribe(employee => {
+      console.log(employee) 
+      this.employee = employee 
+  
+    });
   }
 
 }
